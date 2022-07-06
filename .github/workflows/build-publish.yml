@@ -1,4 +1,4 @@
-name: Build KeplerGL Python and NPM Packages
+name: Build Kepler.GL & publish to GitHub packages
 
 on: push
 
