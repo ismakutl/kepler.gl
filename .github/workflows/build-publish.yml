@@ -26,12 +26,13 @@ jobs:
       packages: write
       contents: read
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2.1.1
+      - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          registry-url: https://registry.npmjs.org/
+      - run: npm install -g yarn
+      - run: yarn
+      - run: npm publishs
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
