@@ -3,7 +3,6 @@ name: Build Kepler.GL & publish to GitHub packages
 on: push
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
@@ -12,8 +11,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm test
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build # will run `yarn build` command
 
   publish-gpr:
     needs: build
