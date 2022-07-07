@@ -14,7 +14,10 @@
     "visualization",
     "deck.gl"
   ],
-  "private": true,
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "workspaces": [
     "./src/constants",
     "./src/types"
