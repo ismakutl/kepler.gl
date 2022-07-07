@@ -15,10 +15,6 @@
     "deck.gl"
   ],
   "private": false,
-  "workspaces": [
-    "./src/constants",
-    "./src/types"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/keplergl/kepler.gl.git"
