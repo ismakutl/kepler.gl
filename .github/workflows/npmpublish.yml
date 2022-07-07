@@ -17,6 +17,6 @@ jobs:
       # - run: yarn prepublish
       - run: echo "`jq '.private=false' package.json`" > package.json
       # - run: echo "`jq 'del(.workspaces)' package.json`" > package.json
-      - run: npm publish --workspaces
+      - run: yarn publish --force
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
