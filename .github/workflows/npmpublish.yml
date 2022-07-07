@@ -19,6 +19,7 @@ jobs:
       - run: npm publish --workspaces
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        continue-on-error: true
       - run: echo "`jq '.private=false' package.json`" > package.json
       - run: npm publish --workspaces
         env:
