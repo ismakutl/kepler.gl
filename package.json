@@ -1,7 +1,7 @@
 {
   "name": "kepler.gl",
   "author": "Shan He <shan@uber.com>",
-  "version": "2.5.5",
+  "version": "2.5.6",
   "description": "kepler.gl is a webgl based application to visualize large scale location data in the browser",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,10 +14,14 @@
     "visualization",
     "deck.gl"
   ],
-  "private": false,
+  "private": true,
+  "workspaces": [
+    "./src/constants",
+    "./src/types"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/keplergl/kepler.gl.git"
+    "url": "https://github.com/ismakutl/kepler.gl-forked-ismakutl.git"
   },
   "scripts": {
     "install:example": "cd examples/demo-app && yarn",
@@ -51,7 +55,7 @@
     "analyze:bundle": "webpack --config ./webpack/bundle.js --progress --env.prod",
     "check-licence": "uber-licence --dry",
     "add-licence": "uber-licence",
-    "prepublish": "yarn build && yarn build:umd && yarn build:types",
+    "prepublish": "yarn workspaces run prepublish && uber-licence && yarn build && yarn build:umd && yarn build:types",
     "docs": "babel-node ./scripts/documentation.js",
     "typedoc": "typedoc --theme markdown --out typedoc --inputFiles ./src/reducers --inputFiles ./src/actions --excludeExternals --excludeNotExported --excludePrivate",
     "example-version": "babel-node ./scripts/edit-version.js",
@@ -62,7 +66,7 @@
     "web": "(yarn && yarn install:web && yarn start:web)",
     "deploy": "yarn install:web && (cd website && yarn build)",
     "clean": "rm -rf node_modules examples/**/node_modules website/node_modules",
-    "release:patch": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
+    "release:patch": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "files": [
     "dist",
@@ -327,14 +331,5 @@
   "volta": {
     "node": "12.19.0",
     "yarn": "1.22.17"
-  },
-  "bugs": {
-    "url": "https://github.com/keplergl/kepler.gl/issues"
-  },
-  "homepage": "https://github.com/keplergl/kepler.gl#readme",
-  "directories": {
-    "doc": "docs",
-    "example": "examples",
-    "test": "test"
   }
 }
