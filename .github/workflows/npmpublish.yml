@@ -15,7 +15,7 @@ jobs:
       - run: npm install -g yarn
       - run: yarn
       # - run: yarn prepublish
-      - run: echo "`jq '.private=false' package.json`" > package.json
+      # - run: echo "`jq '.private=false' package.json`" > package.json
       # - run: echo "`jq 'del(.workspaces)' package.json`" > package.json
       - run: yarn publish --force
         env:
